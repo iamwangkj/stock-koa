@@ -1,0 +1,9 @@
+{
+  "restartable": "rs",
+  "verbose": true,
+  "watch": ["src"],
+  "ignore": [],
+  "delay": "1000",
+  "exec": "NODE_ENV=development node --inspect -r ts-node/register ./src/app.ts",
+  "ext": "js ts json"
+}
