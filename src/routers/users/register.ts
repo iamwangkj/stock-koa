@@ -5,7 +5,7 @@ import md5 from 'md5'
 import userModel from '../../models/user'
 
 const router = new Router()
-router.post('/login', async ctx => {
+router.post('/register', async ctx => {
   try {
     const params = ctx.request.body
     const validator = Joi.object({
@@ -20,14 +20,14 @@ router.post('/login', async ctx => {
     let { username, password } = params
     password = md5(password)
     // 验证密码
-    const userInfo = await userModel.findOne({ username, password })
-    console.log('res password=', password)
-    if (!userInfo) {
-      ctx.throw(400, '账号或密码不对')
+    const userInfo = await userModel.findOne({ namen: username })
+    if (userInfo) {
+      ctx.throw(403, '该用户已存在')
     }
-    
+    console.log('userInfo=', userInfo)
+    const res = await userModel.create({ name: username, password })
     // 返回token
-    const token = userInfo.id
+    const token = res.id
     ctx.resolve({ token })
   } catch (err) {
     const code = err.status || 500
