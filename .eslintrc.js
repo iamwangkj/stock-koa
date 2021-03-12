@@ -15,6 +15,7 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    camelcase: 'off'
+    camelcase: 'off',
+    'no-trailing-spaces': 'off'
   }
 }
