@@ -25,7 +25,6 @@ router.post('/register', async ctx => {
     if (userInfo) {
       ctx.throw(403, '该用户已存在')
     }
-    console.log('userInfo=', userInfo)
     const res = await userModel.create({ name: username, password })
     // 返回token
     
