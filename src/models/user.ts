@@ -15,8 +15,8 @@ const schema = new Schema(
       default: ''
     },
     sex: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 2
     },
     birthday: {
       type: Date,

@@ -3,6 +3,7 @@ import Joi from 'joi'
 import _ from 'lodash'
 import md5 from 'md5'
 import userModel from '../../models/user'
+import jwt from '../../utils/jwt'
 
 const router = new Router()
 router.post('/login', async ctx => {
@@ -20,18 +21,17 @@ router.post('/login', async ctx => {
     let { username, password } = params
     password = md5(password)
     // 验证密码
-    const userInfo = await userModel.findOne({ username, password })
-    console.log('res password=', password)
+    const userInfo = await userModel.findOne({ name: username, password })
     if (!userInfo) {
       ctx.throw(400, '账号或密码不对')
     }
     
     // 返回token
-    const token = userInfo.id
+    const token = jwt.sign(userInfo.id)
     ctx.resolve({ token })
   } catch (err) {
-    const code = err.status || 500
-    ctx.reject(null, code, err.message)
+    const subCode = err.status || 500
+    ctx.reject(null, subCode, err.message)
   }
 })
 

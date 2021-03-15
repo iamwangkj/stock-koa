@@ -3,6 +3,7 @@ import Joi from 'joi'
 import _ from 'lodash'
 import md5 from 'md5'
 import userModel from '../../models/user'
+import jwt from '../../utils/jwt'
 
 const router = new Router()
 router.post('/register', async ctx => {
@@ -20,18 +21,19 @@ router.post('/register', async ctx => {
     let { username, password } = params
     password = md5(password)
     // 验证密码
-    const userInfo = await userModel.findOne({ namen: username })
+    const userInfo = await userModel.findOne({ name: username })
     if (userInfo) {
       ctx.throw(403, '该用户已存在')
     }
     console.log('userInfo=', userInfo)
     const res = await userModel.create({ name: username, password })
     // 返回token
-    const token = res.id
+    
+    const token = jwt.sign(res.id)
     ctx.resolve({ token })
   } catch (err) {
-    const code = err.status || 500
-    ctx.reject(null, code, err.message)
+    const subCode = err.status || 500
+    ctx.reject(null, subCode, err.message)
   }
 })
 
