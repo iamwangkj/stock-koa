@@ -19,7 +19,8 @@
     "koa-router": "^10.0.0",
     "lodash": "^4.17.21",
     "md5": "^2.3.0",
-    "mongoose": "^5.11.18"
+    "mongoose": "^5.11.18",
+    "node-schedule": "^2.0.0"
   },
   "devDependencies": {
     "@types/koa-router": "^7.4.1",

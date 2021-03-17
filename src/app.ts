@@ -6,6 +6,7 @@ import mongoose from 'mongoose'
 import routers from './routers'
 import config from './config'
 import codeMap from './config/codeMap'
+import cron from './cron/index'
  
 // 数据库链接
 mongoose.connect(config.mongodbUrl, {
@@ -14,6 +15,9 @@ mongoose.connect(config.mongodbUrl, {
   useFindAndModify: false,
   useUnifiedTopology: true
 })
+
+// 启动定时任务
+cron()
 
 const app = new Koa()
 
