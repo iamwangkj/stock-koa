@@ -12,6 +12,7 @@
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.5",
     "dayjs": "^1.10.4",
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
@@ -22,7 +23,8 @@
     "lodash": "^4.17.21",
     "md5": "^2.3.0",
     "mongoose": "^5.11.18",
-    "node-schedule": "^2.0.0"
+    "node-schedule": "^2.0.0",
+    "nodemailer": "^6.5.0"
   },
   "devDependencies": {
     "@types/koa-router": "^7.4.1",
