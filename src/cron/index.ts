@@ -1,8 +1,9 @@
 import schedule from 'node-schedule'
+import { writeTodayStock } from './stock'
 
 function job1 () {
-  schedule.scheduleJob('*/2 * * * * *', () => {
-    // console.log('The answer to life, the universe, and everything!')
+  schedule.scheduleJob('30 15 * * * *', () => {
+    writeTodayStock()
   })
 }
 

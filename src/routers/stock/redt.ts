@@ -2,9 +2,9 @@ import Router from 'koa-router'
 import { isLogin } from '../../middleware/auth'
 
 const router = new Router()
-router.get('/redt', isLogin, async ctx => {
+router.get('/redt', async ctx => {
   try {
-    ctx.resolve('as')
+    ctx.resolve('allList')
   } catch (err) {
     const subCode = err.status || 500
     ctx.reject(null, subCode, err.message)
