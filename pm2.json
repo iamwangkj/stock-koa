@@ -1,9 +1,9 @@
 {
   "apps": [{
     "name": "stock-koa",
-    "script": "",
-    "cwd": "./",
     "exec_mode": "fork",
+    "script": "dist/app.js",
+    "cwd": "./",
     "max_memory_restart": "1G",
     "autorestart": true,
     "node_args": [],

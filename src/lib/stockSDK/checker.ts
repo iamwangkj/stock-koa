@@ -1,7 +1,7 @@
 // 检验涨跌比
 function check (list) {
-  const upList = []
-  const downList = []
+  const upList: any = []
+  const downList: any = []
   list.forEach((item) => {
     const { code, buy, sale } = item
     const changePercent:any = ((sale.trade - buy.trade) / buy.trade * 100).toFixed(2)

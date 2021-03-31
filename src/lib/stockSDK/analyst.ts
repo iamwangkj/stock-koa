@@ -7,11 +7,11 @@ function dea (lastDea, curDiff) {
 }
 
 function macd (ticks) {
-  const ema12 = []
-  const ema26 = []
-  const diffs = []
-  const deas = []
-  const macds = []
+  const ema12: any = []
+  const ema26: any = []
+  const diffs: any = []
+  const deas: any = []
+  const macds: any = []
   ticks.forEach((c, i) => {
     if (i === 0) {
       ema12.push(c)
