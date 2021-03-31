@@ -34,4 +34,5 @@ export async function writeTodayStock () {
     }
   })
   const res = await stockModel.collection.insertMany(docs)
+  console.log('插入新的股票行情=', res)
 }

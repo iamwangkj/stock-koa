@@ -47,11 +47,11 @@ export async function sendPolicy () {
 
     // 有新的政策发布了，插入数据库并发通知
     const newLen = newPolicyList.length
+    console.log('新政策的条数为', newLen)
     if (newLen === 0) {
       return false
     }
     await policyModel.insertMany(newPolicyList)
-    console.log('新的政策插入成功，条数为', newLen)
 
     // 发邮件通知有新的政策发布了
     let html = ''
@@ -59,7 +59,7 @@ export async function sendPolicy () {
       const { title, url, date } = item
       html += `<p>（${date}）<a href="${url}">${title}</a></p>`
     })
-    await sendMail({ to: 'ne.wkj@qq.com', title: '国务院政策有新的发布', subject: '点击查看政策', content: html })
+    await sendMail({ to: 'ne.wkj@qq.com', title: '新政策', subject: '点击查看国务院政策', content: html })
     return newPolicyList
   } catch (err) {
     console.error(err)
