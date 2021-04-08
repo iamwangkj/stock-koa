@@ -2,7 +2,7 @@
 import axios from 'axios'
 import cheerio from 'cheerio'
 import _ from 'lodash'
-import { sendMail } from '../lib/mailer'
+import { sendMail } from '../utils/mailer'
 import policyModel from '../models/policy'
 
 interface PolicyItem {
